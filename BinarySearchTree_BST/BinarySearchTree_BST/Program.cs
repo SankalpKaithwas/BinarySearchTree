@@ -21,6 +21,8 @@ namespace BinarySearchTree_BST
             binarySearchTree.Insert(63);
             binarySearchTree.Display();
             binarySearchTree.Size();
+            bool result = binarySearchTree.Search(63, binarySearchTree);
+            Console.WriteLine("Founded: " + result);
         }
     }
 }

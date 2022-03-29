@@ -7,6 +7,8 @@ namespace BinarySearchTree_BST
         public BinarySearchTree<T> left;
         public BinarySearchTree<T> right;
         int leftCount, rightCount;
+        bool result = false;
+
         public BinarySearchTree(T data)
         {
             nodeData = data;
@@ -26,9 +28,7 @@ namespace BinarySearchTree_BST
                 }
                 else
                 {
-
                     left.Insert(item);
-
                 }
             }
             else
@@ -40,9 +40,7 @@ namespace BinarySearchTree_BST
                 }
                 else
                 {
-
                     right.Insert(item);
-
                 }
             }
         }
@@ -56,7 +54,6 @@ namespace BinarySearchTree_BST
             Console.WriteLine(nodeData.ToString());
             if (right != null)
             {
-
                 right.Display();
             }
         }
@@ -64,6 +61,26 @@ namespace BinarySearchTree_BST
         {
             int size = leftCount + rightCount + 1;
             Console.WriteLine("Size of tree is: " + size);
+        }
+        public bool Search(T data, BinarySearchTree<T> node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+            else if (node.nodeData.Equals(data))
+            {
+                return true;
+            }
+            else if (data.CompareTo(node.nodeData) > 0)
+            {
+                result = Search(data, node.right);
+            }
+            else if (data.CompareTo(node.nodeData) < 0)
+            {
+                result = Search(data, node.left);
+            }
+            return result;
         }
     }
 }
